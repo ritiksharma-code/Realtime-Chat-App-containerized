@@ -64,7 +64,76 @@ A modern, feature-rich realtime chat application built with the MERN stack (Mong
 
 ### Installation
 
-#### Using Docker (Recommended)
+#### Using Docker Hub (Easiest)
+1. Create a file named `docker-compose.prod.yml` and add the following content:
+\`\`\`yaml
+version: '3.8'
+
+services:
+  frontend:
+    container_name: pingpal-frontend
+    image: ritiksharma454/pingpal:frontend-v1.0
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  backend:
+    container_name: pingpal-backend
+    image: ritiksharma454/pingpal:backend-v1.0
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: pingpal-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge
+\`\`\`
+
+2. Create a `.env` file in the `backend` directory with the following variables:
+\`\`\`
+NODE_ENV=production
+PORT=8000
+MONGODB_URI=mongodb://mongodb:27017/chat-app
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+\`\`\`
+
+3. Run the application
+\`\`\`bash
+docker compose -f docker-compose.prod.yml up -d
+\`\`\`
+
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+
+
+#### Building from source with Docker
 
 1. Clone the repository
 ```bash

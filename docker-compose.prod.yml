@@ -3,9 +3,7 @@ version: '3.8'
 services:
   frontend:
     container_name: pingpal-frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ritiksharma454/pingpal:frontend-v1.0
     ports:
       - "3000:80"
     depends_on:
@@ -17,9 +15,7 @@ services:
 
   backend:
     container_name: pingpal-backend
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: ritiksharma454/pingpal:backend-v1.0
     env_file:
       - ./backend/.env
     ports:
