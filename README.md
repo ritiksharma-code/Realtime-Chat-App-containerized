@@ -113,7 +113,7 @@ networks:
 \`\`\`
 
 2. Create a `.env` file in the `backend` directory with the following variables:
-\`\`\`
+```
 NODE_ENV=production
 PORT=8000
 MONGODB_URI=mongodb://mongodb:27017/chat-app
@@ -121,12 +121,12 @@ JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-\`\`\`
+```
 
 3. Run the application
-\`\`\`bash
+```bash
 docker compose -f docker-compose.prod.yml up -d
-\`\`\`
+```
 
 The application will be available at:
 - Frontend: http://localhost:3000
