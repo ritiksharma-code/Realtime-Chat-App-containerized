@@ -66,7 +66,7 @@ A modern, feature-rich realtime chat application built with the MERN stack (Mong
 
 #### Using Docker Hub (Easiest)
 1. Create a file named `docker-compose.prod.yml` and add the following content:
-\`\`\`yaml
+```yaml
 version: '3.8'
 
 services:
@@ -110,7 +110,7 @@ volumes:
 networks:
   app-network:
     driver: bridge
-\`\`\`
+```
 
 2. Create a `.env` file in the `backend` directory with the following variables:
 ```
