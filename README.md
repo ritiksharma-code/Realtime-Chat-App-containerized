@@ -137,8 +137,8 @@ The application will be available at:
 
 1. Clone the repository
 ```bash
-git clone https://github.com/ritiksharma-code/Realtime-Chat-App.git
-cd Realtime-Chat-App
+git clone https://github.com/ritiksharma-code/Realtime-Chat-App-containerized.git
+cd Realtime-Chat-App-containerized
 ```
 
 2. Configure Environment Variables
